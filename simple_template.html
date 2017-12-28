@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Fibonacci numbers</title>
+
+  </head>
+  <body>
+	<h1>Fibonacci numbers</h1>
+	<input id="index" type="text" />
+	<button id="calculate">Calculate</button>
+	
+	<br>
+	
+	<div id="result"></div>
+    {{{ SCRIPT }}}
+    <script type="text/javascript">
+		document.querySelector('#calculate').addEventListener('click', function(){
+			var number = document.querySelector('#index').value;
+			var result = Module.ccall('getFibonacciNumber', // name of C function 
+								 'number', // return type
+								 ['number'], // argument types
+								 [parseInt(number, 10)]); // arguments
+			 document.querySelector("#result").innerHTML = result;
+		});
+    </script>
+  </body>
+</html>
